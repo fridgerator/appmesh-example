@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AWS Appmesh http2</title>
+  </head>
+  <body>
+    <main>
+        <h1>Hello</h1>
+        <div id="container"></div>
+    </main>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script>
+      const e = React.createElement;
+
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { message: '' };
+
+          const source = new EventSource('/stream')
+          source.onmessage = (e) => {
+            this.setState({
+              message: e.data
+            })
+          }
+        }
+
+        render() {
+          return `SSE message : ${this.state.message}`
+        }
+      }
+
+      const domContainer = document.querySelector('#container');
+      const root = ReactDOM.createRoot(domContainer);
+      root.render(e(LikeButton));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "appmeshhttp2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "generate-cert": "sh ./bin/generate_cert.sh",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "spdy": "^4.0.2"
+  }
+}
