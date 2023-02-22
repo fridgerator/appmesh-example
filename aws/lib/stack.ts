@@ -69,6 +69,9 @@ export class AppMeshStack extends Stack {
           weight: 1,
           virtualNode: clientNode,
         }],
+        timeout: {
+          perRequest: Duration.millis(600000)
+        }
       }),
     });
 
@@ -199,6 +202,9 @@ export class AppMeshStack extends Stack {
         healthCheck: HealthCheck.http({
           path: 'health',
         }),
+        timeout: {
+          perRequest: Duration.millis(600000)
+        }
       })],
     });
 
@@ -230,6 +236,9 @@ export class AppMeshStack extends Stack {
           weight: 1,
           virtualNode: backendNode,
         }],
+        timeout: {
+          perRequest: Duration.millis(600000)
+        }
       }),
     });
 
